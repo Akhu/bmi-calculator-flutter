@@ -9,8 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^0.1.2
+  font_awesome_flutter: ^8.8.0
+
+dependency_overrides:
+  font_awesome_flutter:
+    path: "/Users/Anthony/Code/Flutter/CustomPub/font_awesome_flutter"
 
 dev_dependencies:
   flutter_test:
