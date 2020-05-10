@@ -9,7 +9,7 @@ const kActiveBackgroundCardColor = Color(0xFF1D1F35);
 const kNormalContentColor = Color(0xFF8D8E98);
 const kActiveContentColor = Colors.white;
 const kNormalLabelTextStyle = TextStyle(
-  fontSize: 18.0, color: kNormalContentColor,
+  fontSize: 16.0, color: kNormalContentColor,
   fontWeight: FontWeight.w600,
   textBaseline: TextBaseline.ideographic
 );

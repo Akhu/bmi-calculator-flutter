@@ -1,10 +1,13 @@
+import 'package:bmi_calculator/label_appendice.dart';
 import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'constants.dart';
 import 'icon_text.dart';
+import 'number_value_card.dart';
 
 const bottomContainerHeight = 92.0;
 class InputPage extends StatefulWidget {
@@ -78,19 +81,9 @@ class _InputPageState extends State<InputPage> {
                           color: kNormalContentColor
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.ideographic,
-                        children: <Widget>[
-                          Text(
-                            height.toString(),
-                            style: kNumberTextStyle,
-                          ),
-                          Text('cm',
-                            style: kNormalLabelTextStyle,
-                          )
-                        ],
+                      LabelAppendix(
+                        value: height.toString(),
+                        appendix: 'cm',
                       ),
                       SizedBox(
                         height: 12.0,
@@ -114,36 +107,38 @@ class _InputPageState extends State<InputPage> {
             Row(
               children: <Widget>[
                 Expanded(
-                    child: ReusableCard(
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('WEIGHT', style: kNormalLabelTextStyle,),
-                          Text(
-                            weight.toString(),
-                            style: kNumberTextStyle,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              RoundIconButton(),
-                              FloatingActionButton(
-                                backgroundColor: kActiveBackgroundCardColor,
-                                child: FaIcon(
-                                  FontAwesomeIcons.plus,
-                                  color: Colors.white,
-                                ),
-                              )
-                            ]
-                          ),
-
-
-                        ],
-                      ),
-                      colour:  kNormalBackgroundCardColor,)
+                    child: NumberValueCard(
+                      number: weight,
+                      numberAppendix: 'kg',
+                      numberLabel: 'WEIGHT',
+                      functionPlus: (){
+                        setState(() {
+                          weight++;
+                        });
+                      },
+                      functionMinus: (){
+                        setState(() {
+                          weight--;
+                        });
+                      },
+                    )
                 ),
                 Expanded(
-                    child: ReusableCard(
-                      colour:  kNormalBackgroundCardColor,)
+                    child: NumberValueCard(
+                      number: age,
+                      numberAppendix: 'yo',
+                      numberLabel: 'AGE',
+                      functionPlus: (){
+                        setState(() {
+                          age++;
+                        });
+                      },
+                      functionMinus: (){
+                        setState(() {
+                          age--;
+                        });
+                      },
+                    )
                 ),
               ],
             )),
@@ -159,18 +154,6 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0
-      ),
-      shape: CircleBorder(),
-      fillColor: kNormalContentColor,
-    );
-  }
-}
+
 
 
